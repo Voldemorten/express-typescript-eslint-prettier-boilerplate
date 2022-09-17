@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "label": "npm: build",
+            "detail": "npx tsc"
+        },
+        {
+            "type": "shell",
+            "label": "clean app",
+            "command": "rm -rf ./dist"
+        },
+        {
+            "label": "prepare app to debug",
+            "type": "shell",
+            "command": "echo prepare app to debug",
+            "dependsOrder": "sequence",
+            "dependsOn": ["npm: build"]
+        },
+        {
+            "label": "clean app after debug",
+            "type": "shell",
+            "command": "echo clean app after debug",
+            "dependsOrder": "sequence",
+            "dependsOn": ["clean app"]
+        }
+    ]
+}
